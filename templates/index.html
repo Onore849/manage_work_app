@@ -28,6 +28,9 @@
                     <td>{{v['comment']}}</td>
                     <!-- edit関数を作成したら有効にする -->
                     <!-- <td>編集日時</td> -->
+                    <td>
+                        <a href="{{url_for('delete', id=v['id'])}}">削除</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </table>

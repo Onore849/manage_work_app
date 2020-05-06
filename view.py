@@ -44,5 +44,14 @@ def add_employee():
         connection.commit()
         return redirect(url_for('index'))
         
+@app.route('/delete/<int:id>')
+def delete(id):
+    connection = get_db_connection()
+    cursor = connection.cursor()
+    cursor.execute('DELETE FROM employees_list WHERE id=?',(id,))
+    connection.commit()
+    return redirect(url_for('index'))
+
+
 if __name__ == '__main__':
     app.run(debug=True)
