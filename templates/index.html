@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>従業員一覧</title>
+</head>
+<body>
+    <section>
+        <div>
+            <h1>Employees_list</h1>
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>名前</th>
+                    <th>コメント</th>
+                    <th>編集</th>
+                    <!-- <th>編集日時</th> -->
+                </tr>
+                {% for v in employees_list %}
+                <tr>
+                    <td>{v['id']}</td>
+                    <td>{v['name']}</td>
+                    <td>{v['comment']</td>
+                    <td><a href="{{url_for('edit', id=v[id])}}"></a>編集</td>
+                    <!-- <td>編集日時</td> -->
+                </tr>
+                { endfor }
+            </table>
+        </div>
+    </section>
+</body>
+</html>
