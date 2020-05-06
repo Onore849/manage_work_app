@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>従業員の追加</title>
+</head>
+<body>
+    <section>
+        <div>
+            <h1>従業員の追加</h1>
+            <form action="{{url_for('add_employee')}}" method="post">
+                <!-- エラーの表示 -->
+                {% if error_list %}
+                <ul>
+                    {% for v in error_list %}
+                        <li>{{v}}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                
+                <!-- 従業員の追加 -->
+                <p>
+                    名前：<input type="text" name="name" value="{{employee['name']}}">
+                </p>
+                <p>
+                    コメント：<input type="text" name="comment" value="{{employee['comment']}}">
+                </p>
+
+                <button type="submit">従業員を追加する</button>
+            </form>
+        </div>
+        <a href="/">トップに戻る</a>
+    </section>
+</body>
+</html>
