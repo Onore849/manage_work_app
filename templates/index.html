@@ -6,9 +6,13 @@
     <title>従業員一覧</title>
 </head>
 <body>
+    <header>
+        <a href="{{url_for('add_employee')}}">従業員の追加</a>
+    </header>
     <section>
         <div>
             <h1>Employees_list</h1>
+
             <table>
                 <tr>
                     <th>id</th>
@@ -19,13 +23,13 @@
                 </tr>
                 {% for v in employees_list %}
                 <tr>
-                    <td>{v['id']}</td>
-                    <td>{v['name']}</td>
-                    <td>{v['comment']</td>
-                    <td><a href="{{url_for('edit', id=v[id])}}"></a>編集</td>
+                    <td>{{v['id']}}</td>
+                    <td>{{v['name']}}</td>
+                    <td>{{v['comment']}}</td>
+                    <!-- edit関数を作成したら有効にする -->
                     <!-- <td>編集日時</td> -->
                 </tr>
-                { endfor }
+                {% endfor %}
             </table>
         </div>
     </section>
