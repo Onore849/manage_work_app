@@ -1,4 +1,5 @@
 import sqlite3
+import datetime
 from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
@@ -57,7 +58,8 @@ def delete(id):
 def edit(id):
     connection = get_db_connection()
     cursor = connection.cursor()
-    res = cursor.execute('SELECT * FROM days')
+    today = datetime.datetime.now().month
+    res = cursor.execute('SELECT * FROM days WHERE rank={}'.format(today))
     return render_template('edit.html', date=res.fetchall())
 
 if __name__ == '__main__':

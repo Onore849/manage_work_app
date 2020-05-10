@@ -16,9 +16,9 @@ except sqlite3.Error as e:
 
 
 try:
+    cur.execute('DROP TABLE IF EXISTS days')
     for v in range(1,13):
-        # cur.execute('DROP TABLE IF EXISTS days')
-        cur.execute('CREATE TABLE IF NOT EXISTS days (dates TEXT , weekdays TEXT, str_time TEXT, end_time TEXT, status TEXT)')
+        cur.execute('CREATE TABLE IF NOT EXISTS days (dates TEXT , weekdays TEXT, str_time TEXT, end_time TEXT, status TEXT, rank TEXT)')
         
         c = calendar.Calendar()
         month = c.itermonthdates(2019, v)
@@ -28,14 +28,14 @@ try:
                 weekday = ['月', '火', '水', '木', '金', '土', '日']
                 day_name = weekday[i.weekday()]
                 day = f'{i: %m月%d日}'
-                cur.execute('INSERT INTO days(dates, weekdays) VALUES (?, ?)', (day, day_name))
+                cur.execute('INSERT INTO days(dates, weekdays, rank) VALUES (?, ?, ?)', (day, day_name, v))
         
                 connection.commit()
 
 except sqlite3.Error as e:
     print('sqlite3.Error has occurred', e.args[0])
 
-# cur.execute('SELECT * FROM days')
-# print(cur.fetchall())
+cur.execute('SELECT * FROM days')
+print(cur.fetchall())
 connection.close()
 
