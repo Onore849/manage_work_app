@@ -53,7 +53,12 @@ def delete(id):
     return redirect(url_for('index'))
 
 
-
+@app.route('edit/<int:id>')
+def edit(id):
+    connection = get_db_connection()
+    cursor = connection.cursor()
+    res = cursor.execute('SELECT * FROM days')
+    return render_template('edit.html', date=res.fetchall())
 
 if __name__ == '__main__':
     app.run(debug=True)
