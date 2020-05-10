@@ -18,6 +18,7 @@
                     <th>id</th>
                     <th>名前</th>
                     <th>コメント</th>
+                    <th>削除</th>
                     <th>編集</th>
                     <!-- <th>編集日時</th> -->
                 </tr>
@@ -30,6 +31,9 @@
                     <!-- <td>編集日時</td> -->
                     <td>
                         <a href="{{url_for('delete', id=v['id'])}}">削除</a>
+                    </td>
+                    <td>
+                        <a href="url_for('edit', id=v['id'])">EDIT</a>
                     </td>
                 </tr>
                 {% endfor %}
