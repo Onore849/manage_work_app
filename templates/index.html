@@ -33,7 +33,7 @@
                         <a href="{{url_for('delete', id=v['id'])}}">削除</a>
                     </td>
                     <td>
-                        <a href="url_for('edit', id=v['id'])">EDIT</a>
+                        <a href="{{url_for('edit', id=v['id'])}}">EDIT</a>
                     </td>
                 </tr>
                 {% endfor %}

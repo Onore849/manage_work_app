@@ -53,7 +53,7 @@ def delete(id):
     return redirect(url_for('index'))
 
 
-@app.route('edit/<int:id>')
+@app.route('/edit/<int:id>')
 def edit(id):
     connection = get_db_connection()
     cursor = connection.cursor()
