@@ -54,13 +54,23 @@ def delete(id):
     return redirect(url_for('index'))
 
 
-@app.route('/edit/<int:id>')
+@app.route('/edit/<int:id>/')
 def edit(id):
     connection = get_db_connection()
     cursor = connection.cursor()
+    # 今月を読み込む
     today = datetime.datetime.now().month
     res = cursor.execute('SELECT * FROM days WHERE rank={}'.format(today))
-    return render_template('edit.html', date=res.fetchall())
+    return render_template('edit.html', date=res.fetchall(), today_month=today)
+
+
+@app.route('/month/<month_no>/')
+def edit_month(month_no):
+    connection = get_db_connection()
+    cursor = connection.cursor()
+    res = cursor.execute('SELECT * FROM days WHERE rank={}'.format(month_no))
+    return render_template('month.html', date=res.fetchall(), month_no=month_no)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
