@@ -33,6 +33,7 @@ def add_employee():
             error.append('従業員名を追加してください')
         
         if error:
+            # inputタグで送ったデータの辞書化
             employee = request.form.to_dict()
             # return render_template('edit.html', employee=employee, error_list=error)
             return render_template('add_employee.html', employee=employee, error_list=error)
@@ -45,6 +46,7 @@ def add_employee():
         connection.commit()
         return redirect(url_for('index'))
         
+# 従業員の削除
 @app.route('/delete/<int:id>')
 def delete(id):
     connection = get_db_connection()
@@ -53,19 +55,13 @@ def delete(id):
     connection.commit()
     return redirect(url_for('index'))
 
-
+# 各月のシフト表の作成
+# 1~12月までの月を格納したリスト
+month_list = []
+for v in range(1, 13):
+    month_list.append(v)
 @app.route('/edit<int:id>/month_list')
 def edit(id):
-    # connection = get_db_connection()
-    # cursor = connection.cursor()
-    # 今月を読み込む
-    # today = datetime.datetime.now().month
-    # res = cursor.execute('SELECT * FROM days WHERE rank={}'.format(today))
-    # return render_template('edit.html', date=res.fetchall(), today_month=today)
-    # res = cursor.execute('SELECT * FROM days')
-    month_list = []
-    for v in range(1, 13):
-        month_list.append(v)
     return render_template('month_list.html', id=id, month_list=month_list)
 
 
@@ -74,7 +70,7 @@ def edit_month(month_no, id):
     connection = get_db_connection()
     cursor = connection.cursor()
     res = cursor.execute('SELECT * FROM days WHERE rank={}'.format(month_no))
-    return render_template('month.html', date=res.fetchall(), month_no=month_no)
+    return render_template('month.html', date=res.fetchall(), month_no=month_no, month_list=month_list, id=id)
 
 
 if __name__ == '__main__':

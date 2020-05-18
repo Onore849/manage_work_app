@@ -9,18 +9,9 @@
 <body>
     <header>
         <a href="/">トップに戻る</a>
-        <a href="/month/1/">1月</a>
-        <a href="/month/2/">2月</a>
-        <a href="/month/3/">3月</a>
-        <a href="/month/4/">4月</a>
-        <a href="/month/5/">5月</a>
-        <a href="/month/6/">6月</a>
-        <a href="/month/7/">7月</a>
-        <a href="/month/8/">8月</a>
-        <a href="/month/9/">9月</a>
-        <a href="/month/10/">10月</a>
-        <a href="/month/11/">11月</a>
-        <a href="/month/12/">12月</a>
+        {% for v in month_list%}
+        <a href="{{url_for('edit_month', month_no=v, id=id)}}">{{v}}月</a>
+        {%endfor%}
     </header>
     <section>
         <div>
