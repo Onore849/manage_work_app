@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>
+            <a href="/">トップに戻る</a>
+        </li>
+        <% for v in month_list%>
+        <li>
+            <a href="{{url_for('edit_month', month_no=v, id=id)}}">{{v}}月</a>
+        </li>
+        <%endfor%>
+        <!-- <li>
+            <a href="id/month/2/">2月</a>
+        </li>
+        <li>
+            <a href="id/month/3/">3月</a>
+        </li>
+        <li>
+            <a href="/month/4/">4月</a>
+        </li>
+        <li>
+            <a href="/month/5/">5月</a>
+        </li>
+        <li>
+            <a href="/month/6/">6月</a>
+        </li>
+        <li>
+            <a href="/month/7/">7月</a>
+        </li>
+        <li>
+            <a href="/month/8/">8月</a>
+        </li>
+        <li>
+            <a href="/month/9/">9月</a>
+        </li>
+        <li>
+            <a href="/month/10/">10月</a>
+        </li>
+        <li>
+            <a href="/month/11/">11月</a>
+        </li>
+        <li>
+            <a href="/month/12/">12月</a>
+        </li> -->
+    </ul>
+</body>
+</html>
